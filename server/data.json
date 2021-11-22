@@ -1,7 +1,36 @@
-{  
-        "title": "hi",
-        "message": "bla",
-        "likes": 3,
-        "dislikes": 4,
-        "emoji": 1
+{
+    "comments": [
+        {
+            "title": "hi",
+            "message": "bla",
+            "likes": 3,
+            "dislikes": 4,
+            "emoji": 1,
+            "gifUrl": "www.whatever.com",
+            "reply": [
+                {
+                    "title": "hi",
+                    "message": "bla",
+                    "likes": 3,
+                    "dislikes": 4,
+                    "emoji": 1,
+                    "gifUrl": "www.whatever.com",
+                    "reply": [
+                
+                    ]
+                },
+                {
+                    "title": "hi",
+                    "message": "bla",
+                    "likes": 3,
+                    "dislikes": 4,
+                    "emoji": 1,
+                    "gifUrl": "www.whatever.com",
+                    "reply": [
+                
+                    ]
+                }  
+            ]
+        }    
+    ]
 }
