@@ -4,9 +4,14 @@
   "description": "This is a Twitter knockoff",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --silent",
+    "dev": "nodemon ./server/index.js",
     "coverage": "jest --coverage --silent",
+<<<<<<< HEAD
     "dev": "nodemon"
+=======
+    "start": "node ./server/index.js",
+    "test": "jest --watchAll --silent"
+>>>>>>> 9a447f1cb0574a21f61b6ba7cfe942e498e7ea02
   },
   "repository": {
     "type": "git",

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  [   {
         "id":1,
         "title":"Was religion created as a control mechanism so that the rich could profit off the poor and vulnerable?",
@@ -39,3 +40,131 @@
         "comments":["Cool Post", "Really interest thought"]
     }
  ]
+=======
+[
+    {
+        "id": "John Doe",
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    },
+    {
+        "id": "John Doe",
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    },
+    {
+        "id": "John Doe",
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    },
+    {
+        "id": "John Doe",
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    },
+    {
+        "id": "John Doe",
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    },
+    {
+        "id": "John Doe",
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    },
+    {
+        "id": "John Doe",
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    },
+    {
+        "id": "John Doe",
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    },
+    {
+        "id": 9,
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    },
+    {
+        "id": 10,
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 1,
+        "dislikes": 0,
+        "love": 3,
+        "comment": [
+            "hello t here",
+            "hello t here"
+        ],
+        "add": 4
+    },
+    {
+        "id": 11,
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    },
+    {
+        "id": 12,
+        "title": "john.doe@example.com",
+        "message": 27,
+        "image": "Male",
+        "likes": 0,
+        "dislikes": 0,
+        "love": 0,
+        "comment": []
+    }
+]
+>>>>>>> 9a447f1cb0574a21f61b6ba7cfe942e498e7ea02
