@@ -1,17 +1,17 @@
 const express = require('express')
 const router = express.Router()
 
-const entry = require('../models/entries');
+const Entry = require('../models/entries');
 
 //
 router.route('/')
       .get((req,res) =>{
-          const entryData = entry.all;
+          const entryData = Entry.all;
           res.send(entryData);
       })
       .post((req,res) => {
           const data = req.body;
-          const newEntry = entry.create(data);
+          const newEntry = Entry.create(data);
           res.status(201).send(newEntry)
       })
       .delete((req,res) =>{
@@ -21,6 +21,8 @@ router.route('/')
 //get sepcific tweet
 router.get('/:title', (req,res) =>{
     const title = req.params.title;
-    const selectedTweet = entry.findByTitle(title)
+    const selectedTweet = Entry.findByTitle(title)
     res.send(selectedTweet);
 })
+
+module.exports = router;
