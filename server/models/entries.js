@@ -1,4 +1,5 @@
 const entries = require('../data.json');
+const fs = require('fs')
 
 class Entry {
     constructor(data) {
@@ -10,7 +11,8 @@ class Entry {
     }
 
     static get all() {
-        const allEntries = JSON.stringify(entries)
+        const allEntries = file;
+        //const allEntries = JSON.stringify(entries)
         return allEntries;
     }
 
@@ -24,9 +26,15 @@ class Entry {
         }
     }
 
-    static create(Entry) {
+    static create(entry) {
         const newEntry = new Entry(entry);
-        entries.push(newEntry);
+        const data = JSON.stringify(newEntry);
+        fs.writeFile('../data.json', data, (err) =>{
+            if(err){
+                throw err;
+            }
+            console.log('Data saved')
+        })
         return newEntry;
     }
 }

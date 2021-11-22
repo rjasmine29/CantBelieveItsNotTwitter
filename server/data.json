@@ -9,7 +9,7 @@
             "gifUrl": "www.whatever.com",
             "reply": [
                 {
-                    "title": "hi",
+                    "title": "hi2",
                     "message": "bla",
                     "likes": 3,
                     "dislikes": 4,
@@ -20,7 +20,7 @@
                     ]
                 },
                 {
-                    "title": "hi",
+                    "title": "hi3",
                     "message": "bla",
                     "likes": 3,
                     "dislikes": 4,
