@@ -1,3 +1,46 @@
+<<<<<<< HEAD
+ [   {
+        "id":1,
+        "title":"Was religion created as a control mechanism so that the rich could profit off the poor and vulnerable?",
+        "message":"Religion promises of ever lasting life in so many religions. Looking back this promise often came with a cost.Why is that?",
+        "image":"https://media.giphy.com/media/TdpZPpb7MjzWsoZGGn/giphy.gif",
+        "dislikes": 0,
+        "likes":0,
+        "love":0,
+        "comments":["Cool Post", "Really interest thought"]
+    },
+    {
+        "id":2,
+        "title":"Was religion created as a control mechanism so that the rich could profit off the poor and vulnerable?",
+        "message":"Religion promises of ever lasting life in so many religions. Looking back this promise often came with a cost.Why is that?",
+        "image":"https://media.giphy.com/media/12NlCFUvTokWXe/giphy.gif",
+        "dislikes": 0,
+        "likes":0,
+        "love":0,
+        "comments":["Cool Post", "Really interest thought"]
+    },
+    {
+        "id":3,
+        "title":"Was religion created as a control mechanism so that the rich could profit off the poor and vulnerable?",
+        "message":"Religion promises of ever lasting life in so many religions. Looking back this promise often came with a cost.Why is that?",
+        "image":"https://giphy.com/embed/12NlCFUvTokWXe",
+        "dislikes": 0,
+        "likes":0,
+        "love":0,
+        "comments":["Cool Post", "Really interest thought"]
+    },
+    {
+        "id":4,
+        "title":"Was religion created as a control mechanism so that the rich could profit off the poor and vulnerable?",
+        "message":"Religion promises of ever lasting life in so many religions. Looking back this promise often came with a cost.Why is that?",
+        "image":"https://giphy.com/embed/12NlCFUvTokWXe",
+        "dislikes": 0,
+        "likes":0,
+        "love":0,
+        "comments":["Cool Post", "Really interest thought"]
+    }
+ ]
+=======
 [
     {
         "id": "John Doe",
@@ -124,3 +167,4 @@
         "comment": []
     }
 ]
+>>>>>>> 9a447f1cb0574a21f61b6ba7cfe942e498e7ea02

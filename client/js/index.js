@@ -11,12 +11,12 @@ button.addEventListener("click", () => {
   }
 });
 
-function init(){
-    data();
+function init() {
+  data();
 }
 
 function data() {
-  fetch("http://localhost:3000/entries")
+  fetch("http://localhost:3001/entries")
     .then((r) => r.json())
     .then((data) => {
       for (let tweet of data) {
@@ -26,16 +26,27 @@ function data() {
         let message1 = tweet.message;
         const message2 = document.createElement("p");
         message2.textContent = message1;
+        let giphyinfo = tweet.image;
+        let likeInfo = tweet.likes;
+        let dislikeInfo = tweet.dislikes;
+        let loveInfo = tweet.love;
+        const image = document.createElement("img");
+        image.src = giphyinfo;
         const singlePost = document.createElement("div");
         const buttonArea = document.createElement("div");
         buttonArea.className = "button-area";
         singlePost.className = "card";
         singlePost.appendChild(title);
         singlePost.appendChild(message2);
+        singlePost.appendChild(image);
         postArea.appendChild(singlePost);
         const love = document.createElement("button");
         const like = document.createElement("button");
         const dislike = document.createElement("button");
+        const likeCount = document.createElement("p");
+        const dislikeCount = document.createElement("p");
+        const loveCount = document.createElement("p");
+        // likeCount.textContent = `${checkCount(like)}`
         love.className = "btn btn-lg btn-dark";
         like.className = "btn btn-lg btn-dark";
         dislike.className = "btn btn-lg btn-dark";
@@ -45,6 +56,11 @@ function data() {
         buttonArea.appendChild(love);
         buttonArea.appendChild(like);
         buttonArea.appendChild(dislike);
+
+        buttonArea.appendChild(likeCount);
+        buttonArea.appendChild(loveCount);
+        buttonArea.appendChild(dislikeCount);
+        
         singlePost.appendChild(buttonArea);
         const comment = document.createElement("button");
         comment.className = "btn btn-lg btn-dark";
@@ -73,19 +89,66 @@ function data() {
             commentbox.style.display = "block";
           }
         });
+        count = document.querySelector("#count");
+
+        let clicked = false;
+
+        like.addEventListener("click", () => {
+          likeCount.textContent++;
+        });
+        dislike.addEventListener("click", () => {
+          dislikeCount.textContent++;
+        });
+        love.addEventListener("click", () => {
+          loveCount.textContent++;
+        });
+      
       }
     });
 }
 
-const postForm = document.querySelector('#postForm');
-postForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log('hi ')
-})
+const postForm = document.querySelector("#postForm");
+postForm.addEventListener("submit", (e) => {
+  console.log("Submitted");
+  e.preventDefault();
+  const postData = {
+    title: e.target.postTitle.value,
+    message: e.target.postMessage.value,
+    image: e.target.postGiphy.value,
+    like: 0,
+    dislikes: 0,
+    loves: 0,
+    comments: [],
+  };
+  console.log(postData);
 
+  const options = {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+  fetch("http://localhost:3001/entries", options).then(data =>console.log(data));
+});
 
+// fetch("http://localhost:3000/posts", options).then((data) => makePostCard);
+// });
 
-
+// fetch('https://example.com/profile', {
+//   method: 'POST', // or 'PUT'
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+//   body: JSON.stringify(data),
+// })
+// .then(response => response.json())
+// .then(data => {
+//   console.log('Success:', data);
+// })
+// .catch((error) => {
+//   console.error('Error:', error);
+// });
 
 //for(let i in data) - go in to an object
 //for(let i of data) - go through an array
@@ -100,6 +163,5 @@ postForm.addEventListener('submit', (e) => {
 // fetch('http://example.com/movies.json')
 //   .then(response => response.json())
 //   .then(data => console.log(data));
-
 
 init();
