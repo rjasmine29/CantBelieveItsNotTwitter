@@ -29,7 +29,8 @@ class Entry {
 
     static create(entry) {
         const newEntry = new Entry(entry);
-        return newEntry;
+        entries.push(newEntry)
+        return entries;
     }
 
     set addGif(url) {

@@ -33,7 +33,7 @@ router.route('/')
 
       router.route('/create')
             .get((req,res) =>{
-                const newEntry = Entry.create(sample);
+                const newEntry = Entry.create(sample); //change sample to req.body
                 fs.writeFile(path, JSON.stringify(newEntry,null,4), 'utf8', err =>{
                     if(err){
                         console.log('error');
