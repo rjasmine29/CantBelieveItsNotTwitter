@@ -1,7 +1,8 @@
+const port = 3010;
+
 const makeAPost = document.querySelector("#write-a-post");
 makeAPost.style.display = "none"; //makes form invisible to start
 const postArea = document.querySelector("#posts-area");
-
 const button = document.querySelector("#write-a-post-button");
 button.addEventListener("click", () => {
   if (makeAPost.style.display === "block") {
@@ -10,14 +11,14 @@ button.addEventListener("click", () => {
     makeAPost.style.display = "block";
   }
 });
-
-function init(){
-    data();
+function init() {
+  data();
 }
 
 function data() {
-  fetch("http://localhost:3000/entries")
+  fetch("http://localhost:3010/entries")
     .then((r) => r.json())
+    // .then(r=> console.log(r))
     .then((data) => {
       for (let tweet of data) {
         let titleInfo = tweet.title;
@@ -26,16 +27,27 @@ function data() {
         let message1 = tweet.message;
         const message2 = document.createElement("p");
         message2.textContent = message1;
+        let giphyinfo = tweet.image;
+        let likeInfo = tweet.likes;
+        let dislikeInfo = tweet.dislikes;
+        let loveInfo = tweet.love;
+        const image = document.createElement("img");
+        image.src = giphyinfo;
         const singlePost = document.createElement("div");
         const buttonArea = document.createElement("div");
         buttonArea.className = "button-area";
         singlePost.className = "card";
         singlePost.appendChild(title);
         singlePost.appendChild(message2);
+        singlePost.appendChild(image);
         postArea.appendChild(singlePost);
         const love = document.createElement("button");
         const like = document.createElement("button");
         const dislike = document.createElement("button");
+        const likeCount = document.createElement("p");
+        const dislikeCount = document.createElement("p");
+        const loveCount = document.createElement("p");
+        // likeCount.textContent = `${checkCount(like)}`
         love.className = "btn btn-lg btn-dark";
         like.className = "btn btn-lg btn-dark";
         dislike.className = "btn btn-lg btn-dark";
@@ -45,6 +57,10 @@ function data() {
         buttonArea.appendChild(love);
         buttonArea.appendChild(like);
         buttonArea.appendChild(dislike);
+        buttonArea.appendChild(likeCount);
+        buttonArea.appendChild(loveCount);
+        buttonArea.appendChild(dislikeCount);
+        
         singlePost.appendChild(buttonArea);
         const comment = document.createElement("button");
         comment.className = "btn btn-lg btn-dark";
@@ -73,33 +89,45 @@ function data() {
             commentbox.style.display = "block";
           }
         });
+        count = document.querySelector("#count");
+        let clicked = false;
+        like.addEventListener("click", () => {
+          likeCount.textContent++;
+        });
+        dislike.addEventListener("click", () => {
+          dislikeCount.textContent++;
+        });
+        love.addEventListener("click", () => {
+          loveCount.textContent++;
+        });
+      
       }
     });
 }
 
-const postForm = document.querySelector('#postForm');
-postForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log('hi ')
-})
-
-
-
-
-
-//for(let i in data) - go in to an object
-//for(let i of data) - go through an array
-
-// function title() {
-//     for (let i=0; i< data.length; i++) {
-//         console.log(data[i])
-//     }
-// }
-//http://localhost:3000/entries
-
-// fetch('http://example.com/movies.json')
-//   .then(response => response.json())
-//   .then(data => console.log(data));
+const postForm = document.querySelector("#postForm");
+postForm.addEventListener("submit", (e) => {
+  console.log("Submitted");
+  e.preventDefault();
+  const postData = {
+    title: e.target.postTitle.value,
+    message: e.target.postMessage.value,
+    image: e.target.postGiphy.value,
+    like: 0,
+    dislikes: 0,
+    loves: 0,
+    comments: [],
+  };
+  console.log(postData);
+  const options = {
+    method: "POST",
+    body: JSON.stringify(postData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  };
+  fetch(`http://localhost:${port}/entries`, options).then(postData => console.log(postData));
+});
 
 
 init();

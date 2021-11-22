@@ -1,5 +1,4 @@
 const entries = require('../data.json');
-const fs = require('fs')
 
 class Entry {
     constructor(data) {
@@ -42,12 +41,11 @@ class Entry {
         return entries;
     }
 
-    set addGif(url) {
-        this.gifUrl = url;
-    }
+    // set addGif(url) {
+    //     this.gifUrl = url;
+    // }
 
     static addReply(entry, replyData) {
-        console.log(entry,replyData)
         entry.comment.push(replyData)
         return entries;
     }

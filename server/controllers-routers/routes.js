@@ -22,6 +22,17 @@ router.route('/')
           const entryData = data;
           res.send(entryData);
       })
+      .post((req,res) =>{
+        const newEntry = Entry.create(req.body); //change sample to req.body
+        fs.writeFile(path, JSON.stringify(newEntry,null,4), 'utf8', err =>{
+            if(err){
+                console.log('error');
+            }else{
+                console.log('data saved')
+            }
+        }) 
+        res.send(newEntry)
+      })
 
 //updates the db with new entries
 router.route('/create')
