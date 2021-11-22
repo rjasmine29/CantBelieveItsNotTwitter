@@ -8,6 +8,8 @@ class Entry {
         this.likes = data.likes;
         this.dislikes = data.dislikes;
         this.emoji = data.emoji;
+        this.gifUrl = data.gifUrl
+        this.reply = data.reply
     }
 
     static get all() {
@@ -36,6 +38,18 @@ class Entry {
             console.log('Data saved')
         })
         return newEntry;
+    }
+
+    set addGif(url) {
+        this.gifUrl = url;
+    }
+
+    set addReply(replyData) {
+        this.reply = replyData
+    }
+
+    set changeNumberOf(button) {
+        this[`${button}`] ++
     }
 }
 
