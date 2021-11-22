@@ -4,6 +4,7 @@
   "description": "This is a Twitter knockoff",
   "main": "index.js",
   "scripts": {
+    "coverage": "jest --coverage --silent",
     "start": "nodemon ./server/index.js",
     "test": "jest --watchAll --silent"
   },

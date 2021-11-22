@@ -41,6 +41,18 @@ class Entry {
         })
         return newEntry;
     }
+
+    set addGif(url) {
+        this.gifUrl = url;
+    }
+
+    set addReply(replyData) {
+        this.reply = replyData
+    }
+
+    set changeNumberOf(button) {
+        this[`${button}`] ++
+    }
 }
 
 module.exports = Entry;
