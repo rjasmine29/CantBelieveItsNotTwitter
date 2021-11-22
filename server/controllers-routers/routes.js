@@ -4,19 +4,18 @@ const router = express.Router()
 const Entry = require('../models/entries');
 
 //reads stuff from the file syncronously
+const path = __dirname + '/../data.json'
 const fs = require('fs')
-const file = fs.readFileSync(__dirname + '/../data.json');
+const file = fs.readFileSync(path, 'utf8');
 const data = JSON.parse(file);
+console.log(path)
 
-const sample = {
-    "title": "sample",
-    "message": "yadayda",
-    "likes": 1,
-    "dislikes": 6,
-    "emoji": 7,
-    "gifUrl": "www.brum.com",
-    "reply": "nothing"
-}
+let sample = {
+    id: 'John Doe',
+    title: 'john.doe@example.com',
+    message: 27,
+    image: 'Male',
+};
 //
 router.route('/')
       .get((req,res) =>{
@@ -34,20 +33,18 @@ router.route('/')
 
       router.route('/create')
             .get((req,res) =>{
-                //console.log('hello')
-                res.send('hello')
+                const newEntry = Entry.create(sample);
+                fs.writeFile(path, JSON.stringify(newEntry,null,4), 'utf8', err =>{
+                    if(err){
+                        console.log('error');
+                    }else{
+                        console.log('data saved')
+                    }
+                }) 
+                res.send(newEntry)
             })
-            .post((req,res) => {
-    const newEntry = Entry.create(sample);
-    res.status(201).send(newEntry)
+            .post((req,res) => {                
+                res.status(201).send(newEntry)
 })
-
-// //get sepcific tweet
-// router.get('/:title', (req,res) =>{
-//     const title = req.params.title;
-//     console.log(title)
-//     const selectedTweet = Entry.findByTitle(title)
-//     res.send(title);
-// })
 
 module.exports = router;
