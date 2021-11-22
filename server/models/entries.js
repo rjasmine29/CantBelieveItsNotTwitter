@@ -10,8 +10,7 @@ class Entry {
     }
 
     static get all() {
-        const allEntries = entries.map((entry) => new Entry(entry));
-        //const allEntries = JSON.parse(entries)
+        const allEntries = JSON.stringify(entries)
         return allEntries;
     }
 
