@@ -32,8 +32,12 @@ router.route('/')
           res.status().send();
       })
 
-router.get('/create', (req,res) => {
-    console.log(sample)
+      router.route('/create')
+            .get((req,res) =>{
+                //console.log('hello')
+                res.send('hello')
+            })
+            .post((req,res) => {
     const newEntry = Entry.create(sample);
     res.status(201).send(newEntry)
 })

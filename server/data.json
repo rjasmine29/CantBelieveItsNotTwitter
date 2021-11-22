@@ -1,36 +1,42 @@
-{
-    "comments": [
-        {
-            "title": "hi",
-            "message": "bla",
-            "likes": 3,
-            "dislikes": 4,
-            "emoji": 1,
-            "gifUrl": "www.whatever.com",
-            "reply": [
-                {
-                    "title": "hi2",
-                    "message": "bla",
-                    "likes": 3,
-                    "dislikes": 4,
-                    "emoji": 1,
-                    "gifUrl": "www.whatever.com",
-                    "reply": [
-                
-                    ]
-                },
-                {
-                    "title": "hi3",
-                    "message": "bla",
-                    "likes": 3,
-                    "dislikes": 4,
-                    "emoji": 1,
-                    "gifUrl": "www.whatever.com",
-                    "reply": [
-                
-                    ]
-                }  
-            ]
-        }    
-    ]
-}
+[
+    {
+        "id":1,
+        "title":"Was religion created as a control mechanism so that the rich could profit off the poor and vulnerable?",
+        "message":"Religion promises of ever lasting life in so many religions. Looking back this promise often came with a cost.Why is that?",
+        "image":"https://giphy.com/embed/12NlCFUvTokWXe",
+        "dislikes": 0,
+        "likes":0,
+        "love":0,
+        "comments":["Cool Post", "Really interest thought"]
+    },
+    {
+        "id":2,
+        "title":"Was religion created as a control mechanism so that the rich could profit off the poor and vulnerable?",
+        "message":"Religion promises of ever lasting life in so many religions. Looking back this promise often came with a cost.Why is that?",
+        "image":"https://giphy.com/embed/12NlCFUvTokWXe",
+        "dislikes": 0,
+        "likes":0,
+        "love":0,
+        "comments":["Cool Post", "Really interest thought"]
+    },
+    {
+        "id":3,
+        "title":"Was religion created as a control mechanism so that the rich could profit off the poor and vulnerable?",
+        "message":"Religion promises of ever lasting life in so many religions. Looking back this promise often came with a cost.Why is that?",
+        "image":"https://giphy.com/embed/12NlCFUvTokWXe",
+        "dislikes": 0,
+        "likes":0,
+        "love":0,
+        "comments":["Cool Post", "Really interest thought"]
+    },
+    {
+        "id":4,
+        "title":"Was religion created as a control mechanism so that the rich could profit off the poor and vulnerable?",
+        "message":"Religion promises of ever lasting life in so many religions. Looking back this promise often came with a cost.Why is that?",
+        "image":"https://giphy.com/embed/12NlCFUvTokWXe",
+        "dislikes": 0,
+        "likes":0,
+        "love":0,
+        "comments":["Cool Post", "Really interest thought"]
+    }
+]

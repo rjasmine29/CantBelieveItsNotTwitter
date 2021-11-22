@@ -3,11 +3,14 @@ const fs = require('fs')
 
 class Entry {
     constructor(data) {
+        this.id = data.id;
         this.title = data.title;
         this.message = data.message;
+        this.image = data.image;
         this.likes = data.likes;
         this.dislikes = data.dislikes;
-        this.emoji = data.emoji;
+        this.love = data.love;
+        this.comment = data.comment;
     }
 
     static get all() {
@@ -29,7 +32,8 @@ class Entry {
     static create(entry) {
         const newEntry = new Entry(entry);
         const data = JSON.stringify(newEntry);
-        fs.writeFile('../data.json', data, (err) =>{
+        console.log(data)
+        fs.appendFile('../data.json', data, (err) =>{
             if(err){
                 throw err;
             }
