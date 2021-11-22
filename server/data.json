@@ -1,0 +1,36 @@
+{
+    "comments": [
+        {
+            "title": "hi",
+            "message": "bla",
+            "likes": 3,
+            "dislikes": 4,
+            "emoji": 1,
+            "gifUrl": "www.whatever.com",
+            "reply": [
+                {
+                    "title": "hi2",
+                    "message": "bla",
+                    "likes": 3,
+                    "dislikes": 4,
+                    "emoji": 1,
+                    "gifUrl": "www.whatever.com",
+                    "reply": [
+                
+                    ]
+                },
+                {
+                    "title": "hi3",
+                    "message": "bla",
+                    "likes": 3,
+                    "dislikes": 4,
+                    "emoji": 1,
+                    "gifUrl": "www.whatever.com",
+                    "reply": [
+                
+                    ]
+                }  
+            ]
+        }    
+    ]
+}
