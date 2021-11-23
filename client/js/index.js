@@ -19,7 +19,10 @@ function data() {
   fetch("http://localhost:3010/entries")
     .then((r) => r.json())
     .then((data) => {
+      //create all the elements
       for (let tweet of data) {
+        //console.log(tweet)
+        let idInfo = tweet.id;
         let titleInfo = tweet.title;
         const title = document.createElement("h1");
         title.textContent = titleInfo;
@@ -59,7 +62,7 @@ function data() {
         buttonArea.appendChild(likeCount);
         buttonArea.appendChild(loveCount);
         buttonArea.appendChild(dislikeCount);
-        
+
         singlePost.appendChild(buttonArea);
         const comment = document.createElement("button");
         comment.className = "btn btn-lg btn-dark";
@@ -68,21 +71,30 @@ function data() {
         const commentbox = document.createElement("div");
         const form = document.createElement("form");
         const input = document.createElement("input");
-        const submit = document.createElement("input");
-        form.id = 'comment-form';
+        const submit = document.createElement("button");
+        const comments = tweet.comments
+        //console.log(`Type of comment is: ${typeof(comments)}`)
+        if(comments){
+          for(let i of comments) {
+            const newComment = document.createElement('p');
+            newComment.textContent = i
+            commentbox.appendChild(newComment);
+          }
+        }
         submit.textContent = "Submit tweet";
         input.type = "text";
-        form.method = "POST";
         input.placeholder = "Write your comment here...";
-        submit.type = "Submit";
-        submit.id = 'reply';
+        input.id = "commentInput";
+        submit.type = "submit";
+        input.className = "comment-message";
+        submit.className = "btn btn-lg btn-dark";
+        submit.id = "submitButton";
         form.appendChild(input);
         form.appendChild(submit);
         commentbox.appendChild(form);
         singlePost.appendChild(commentbox);
-        input.className ="message";
-        submit.className = "btn btn-lg btn-dark";
         commentbox.style.display = "none";
+
         comment.addEventListener("click", () => {
           if (commentbox.style.display === "block") {
             commentbox.style.display = "none";
@@ -90,31 +102,37 @@ function data() {
             commentbox.style.display = "block";
           }
         });
-        count = document.querySelector("#count");
-        let clicked = false;
-        like.addEventListener("click", () => {
-          likeCount.textContent++;
-        });
-        dislike.addEventListener("click", () => {
-          dislikeCount.textContent++;
-        });
-        love.addEventListener("click", () => {
-          loveCount.textContent++;
-        });
-    }})
-    .then(r => {
-      const reply = document.querySelector('#comment-form')
-      reply.addEventListener('submit', e =>{
-        e.preventDefault();
-        console.log(e.target.message.value)
-      })
+
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          console.log("Submitted");
+          const commentValue = {
+            code: e.target.commentInput.value,
+            id: 1
+          };
+
+          console.log(commentValue);
+          console.log(idInfo)
+          //comments.push(commentValue);
+  
+          const options = {
+            method: "POST",
+            body: JSON.stringify(commentValue),
+            headers: {
+              "Content-Type": "application/json",
+              // 'Access-Control-Allow-Origin':"*"
+            },
+            //mode: "no-cors"
+          };
+          console.log(options.body)
+  
+          fetch(`http://localhost:${port}/entries/${idInfo}/add`, options)
+             .then(console.log)
+          })
+      }
+      console.log('done')
     })
-    .catch(console.warn)
-
-}
-
-
-
+  }
 
 
 const postForm = document.querySelector("#postForm");
@@ -132,13 +150,16 @@ postForm.addEventListener("submit", (e) => {
   };
   console.log(postData);
   const options = {
-    method: "POST",
+    method: "GET",
     body: JSON.stringify(postData),
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
   };
-  fetch(`http://localhost:${port}/entries`, options).then(postData => console.log(postData));
+  fetch(`http://localhost:${port}/entries`, options).then((postData) =>
+    console.log(postData)
+  );
 });
 
 init();

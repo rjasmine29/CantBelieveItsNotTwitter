@@ -9,12 +9,6 @@ const fs = require('fs')
 const file = fs.readFileSync(path, 'utf8');
 //const data = JSON.parse(file);
 
-let sample = {
-    id: 'John Doe',
-    title: 'john.doe@example.com',
-    message: 27,
-    image: 'Male',
-};
 // function to update data.json file
 function writeDataJson (updatedData) {
     fs.writeFile(path, JSON.stringify(updatedData, null, 4), 'utf8', err => {
@@ -37,23 +31,6 @@ router.route('/')
         res.send(newEntry)
       })
 
-// router.route('/')
-//       .get((req,res) =>{
-//           const entryData = data;
-//           res.send(entryData);
-//       })
-//       .post((req,res) =>{
-//         const newEntry = Entry.create(req.body); //change sample to req.body
-//         fs.writeFile(path, JSON.stringify(newEntry,null,4), 'utf8', err =>{
-//             if(err){
-//                 console.log('error');
-//             }else{
-//                 console.log('data saved')
-//             }
-//         }) 
-//         res.send(newEntry)
-//       })
-
 //updates the db with new entries
 // router.route('/create')
 //     .get((req,res) =>{
@@ -75,16 +52,12 @@ router.route('/')
 router.route('/:id/add')
     .post((req,res) =>{
         const id = Number(req.params.id);
+        console.log(id)
         const comment = req.body;
+        console.log(comment)
         const entry = Entry.findById(id);
         const updated = Entry.addReply(entry,comment)
-        fs.writeFile(path, JSON.stringify(updated,null,4), 'utf8', err =>{
-            if(err){
-                console.log('error');
-            }else{
-                console.log('data saved')
-            }
-        }) 
+        writeDataJson(updated)
         res.send(updated)
     })
 
@@ -112,13 +85,7 @@ router.route('/:id/:react')
         const entry = Entry.findById(id);
         const updated = Entry.changeNumberOf(entry, react)
         //write to file again
-        fs.writeFile(path, JSON.stringify(updated,null,4), 'utf8', err =>{
-            if(err){
-                console.log('error');
-            }else{
-                console.log('data saved')
-            }
-        }) 
+        writeDataJson(updated)
         res.send(entry)
     })
 
