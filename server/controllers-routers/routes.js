@@ -8,7 +8,6 @@ const path = __dirname + '/../data.json'
 const fs = require('fs')
 const file = fs.readFileSync(path, 'utf8');
 const data = JSON.parse(file);
-console.log(path)
 
 let sample = {
     id: 'John Doe',
@@ -16,23 +15,44 @@ let sample = {
     message: 27,
     image: 'Male',
 };
-//
+// function to update data.json file
+function writeDataJson (updatedData) {
+    fs.writeFile(path, JSON.stringify(updatedData, null, 4), 'utf8', err => {
+        if (err) {
+            console.log('error')
+        } else {
+            console.log('data saved')
+        }
+    })
+}
+
 router.route('/')
       .get((req,res) =>{
           const entryData = data;
           res.send(entryData);
       })
       .post((req,res) =>{
-        const newEntry = Entry.create(req.body); //change sample to req.body
-        fs.writeFile(path, JSON.stringify(newEntry,null,4), 'utf8', err =>{
-            if(err){
-                console.log('error');
-            }else{
-                console.log('data saved')
-            }
-        }) 
+        const newEntry = Entry.create(sample);
+        writeDataJson(newEntry)
         res.send(newEntry)
       })
+
+// router.route('/')
+//       .get((req,res) =>{
+//           const entryData = data;
+//           res.send(entryData);
+//       })
+//       .post((req,res) =>{
+//         const newEntry = Entry.create(req.body); //change sample to req.body
+//         fs.writeFile(path, JSON.stringify(newEntry,null,4), 'utf8', err =>{
+//             if(err){
+//                 console.log('error');
+//             }else{
+//                 console.log('data saved')
+//             }
+//         }) 
+//         res.send(newEntry)
+//       })
 
 //updates the db with new entries
 router.route('/create')
@@ -95,14 +115,10 @@ router.route('/:id/:react')
 
 const com = 'hello t here'
 
-
-
-
-//get sepcific tweet
+//get specific tweet
 //mutliple word title not working -fix later
 router.get('/:title', (req,res) =>{
     const title = req.params.title;
-    console.log(title)
     const selectedTweet = Entry.findByTitle(title)
     res.send(selectedTweet);
 })
