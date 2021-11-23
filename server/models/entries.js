@@ -50,6 +50,14 @@ class Entry {
         entry[react]++
         return entries;
     }
+
+    static deleteEntry(entry){
+        const index = entries.indexOf(entry.id);
+        if (index > -1){
+            entries.splice(index,1);
+        }
+        return entries;
+    }
 }
 
 module.exports = Entry;
