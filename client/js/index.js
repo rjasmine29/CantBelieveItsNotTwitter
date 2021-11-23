@@ -18,7 +18,6 @@ function init() {
 function data() {
   fetch("http://localhost:3010/entries")
     .then((r) => r.json())
-    // .then(r=> console.log(r))
     .then((data) => {
       for (let tweet of data) {
         let titleInfo = tweet.title;
@@ -69,17 +68,19 @@ function data() {
         const commentbox = document.createElement("div");
         const form = document.createElement("form");
         const input = document.createElement("input");
-        const submit = document.createElement("button");
+        const submit = document.createElement("input");
+        form.id = 'comment-form';
         submit.textContent = "Submit tweet";
         input.type = "text";
         form.method = "POST";
         input.placeholder = "Write your comment here...";
         submit.type = "Submit";
+        submit.id = 'reply';
         form.appendChild(input);
         form.appendChild(submit);
         commentbox.appendChild(form);
         singlePost.appendChild(commentbox);
-        input.className = "comment-message";
+        input.className ="message";
         submit.className = "btn btn-lg btn-dark";
         commentbox.style.display = "none";
         comment.addEventListener("click", () => {
@@ -100,10 +101,21 @@ function data() {
         love.addEventListener("click", () => {
           loveCount.textContent++;
         });
-      
-      }
-    });
+    }})
+    .then(r => {
+      const reply = document.querySelector('#comment-form')
+      reply.addEventListener('submit', e =>{
+        e.preventDefault();
+        console.log(e.target.message.value)
+      })
+    })
+    .catch(console.warn)
+
 }
+
+
+
+
 
 const postForm = document.querySelector("#postForm");
 postForm.addEventListener("submit", (e) => {
@@ -128,6 +140,5 @@ postForm.addEventListener("submit", (e) => {
   };
   fetch(`http://localhost:${port}/entries`, options).then(postData => console.log(postData));
 });
-
 
 init();

@@ -8,8 +8,8 @@
         "likes": 0,
         "love": 0,
         "comments": [
-            "Cool Post",
-            "Really interest thought"
+            "hello t here",
+            "hello t here"
         ]
     },
     {
@@ -46,25 +46,12 @@
         "dislikes": 0,
         "likes": 0,
         "love": 0,
-        "comments": [
-            "Cool Post",
-            "Really interest thought"
-        ]
+        "comments": []
     },
     {
         "id": 5,
-        "title": "john.doe@example.com",
-        "message": 27,
-        "image": "Male",
-        "likes": 0,
-        "dislikes": 0,
-        "love": 0,
-        "comment": []
-    },
-    {
-        "id": 6,
-        "title": "sdfsadsf",
-        "message": "dafsasdfadf",
+        "title": "sadfafd",
+        "message": "sdfdfss",
         "image": "",
         "likes": 0,
         "dislikes": 0,
@@ -72,20 +59,10 @@
         "comment": []
     },
     {
-        "id": 7,
-        "title": "john.doe@example.com",
-        "message": 27,
-        "image": "Male",
-        "likes": 0,
-        "dislikes": 0,
-        "love": 0,
-        "comment": []
-    },
-    {
-        "id": 8,
-        "title": "john.doe@example.com",
-        "message": 27,
-        "image": "Male",
+        "id": 6,
+        "title": "qwe",
+        "message": "wae",
+        "image": "",
         "likes": 0,
         "dislikes": 0,
         "love": 0,

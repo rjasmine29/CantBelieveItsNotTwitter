@@ -42,7 +42,7 @@ class Entry {
     }
 
     static addReply(entry, replyData) {
-        entry.comment.push(replyData)
+        entry.comments.push(replyData)
         return entries;
     }
 

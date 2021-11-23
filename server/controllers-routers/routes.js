@@ -7,7 +7,7 @@ const Entry = require('../models/entries');
 const path = __dirname + '/../data.json'
 const fs = require('fs')
 const file = fs.readFileSync(path, 'utf8');
-const data = JSON.parse(file);
+//const data = JSON.parse(file);
 
 let sample = {
     id: 'John Doe',
@@ -32,7 +32,7 @@ router.route('/')
           res.send(entryData);
       })
       .post((req,res) =>{
-        const newEntry = Entry.create(sample);
+        const newEntry = Entry.create(req.body);
         writeDataJson(newEntry)
         res.send(newEntry)
       })
@@ -71,11 +71,11 @@ router.route('/')
 //     .post((req,res) => {                
 //         res.status(201).send(newEntry)
 // })
-
+//const com = 'hello t here'
 router.route('/:id/add')
-    .get((req,res) =>{
+    .post((req,res) =>{
         const id = Number(req.params.id);
-        const comment = com;
+        const comment = req.body;
         const entry = Entry.findById(id);
         const updated = Entry.addReply(entry,comment)
         fs.writeFile(path, JSON.stringify(updated,null,4), 'utf8', err =>{
@@ -122,7 +122,7 @@ router.route('/:id/:react')
         res.send(entry)
     })
 
-const com = 'hello t here'
+
 
 //get specific tweet
 //mutliple word title not working -fix later
