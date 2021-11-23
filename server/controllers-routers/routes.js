@@ -15,6 +15,7 @@ let sample = {
     message: 27,
     image: 'Male',
 };
+
 // function to update data.json file
 function writeDataJson (updatedData) {
     fs.writeFile(path, JSON.stringify(updatedData, null, 4), 'utf8', err => {
@@ -36,23 +37,6 @@ router.route('/')
         writeDataJson(newEntry)
         res.send(newEntry)
       })
-
-// router.route('/')
-//       .get((req,res) =>{
-//           const entryData = data;
-//           res.send(entryData);
-//       })
-//       .post((req,res) =>{
-//         const newEntry = Entry.create(req.body); //change sample to req.body
-//         fs.writeFile(path, JSON.stringify(newEntry,null,4), 'utf8', err =>{
-//             if(err){
-//                 console.log('error');
-//             }else{
-//                 console.log('data saved')
-//             }
-//         }) 
-//         res.send(newEntry)
-//       })
 
 //updates the db with new entries
 // router.route('/create')
@@ -78,13 +62,7 @@ router.route('/:id/add')
         const comment = com;
         const entry = Entry.findById(id);
         const updated = Entry.addReply(entry,comment)
-        fs.writeFile(path, JSON.stringify(updated,null,4), 'utf8', err =>{
-            if(err){
-                console.log('error');
-            }else{
-                console.log('data saved')
-            }
-        }) 
+        writeDataJson(updated)
         res.send(updated)
     })
 
@@ -112,13 +90,7 @@ router.route('/:id/:react')
         const entry = Entry.findById(id);
         const updated = Entry.changeNumberOf(entry, react)
         //write to file again
-        fs.writeFile(path, JSON.stringify(updated,null,4), 'utf8', err =>{
-            if(err){
-                console.log('error');
-            }else{
-                console.log('data saved')
-            }
-        }) 
+        writeDataJson(updated)
         res.send(entry)
     })
 
