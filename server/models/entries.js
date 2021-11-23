@@ -41,10 +41,6 @@ class Entry {
         return entries;
     }
 
-    // set addGif(url) {
-    //     this.gifUrl = url;
-    // }
-
     static addReply(entry, replyData) {
         entry.comment.push(replyData)
         return entries;
@@ -53,7 +49,6 @@ class Entry {
     static changeNumberOf(entry, react) {
         entry[react]++
         return entries;
-
     }
 }
 
