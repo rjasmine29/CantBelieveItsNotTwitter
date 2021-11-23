@@ -21,6 +21,7 @@ function data() {
     // .then(r=> console.log(r))
     .then((data) => {
       for (let tweet of data) {
+        let idInfo = tweet.id;
         let titleInfo = tweet.title;
         const title = document.createElement("h1");
         title.textContent = titleInfo;
@@ -60,7 +61,7 @@ function data() {
         buttonArea.appendChild(likeCount);
         buttonArea.appendChild(loveCount);
         buttonArea.appendChild(dislikeCount);
-        
+
         singlePost.appendChild(buttonArea);
         const comment = document.createElement("button");
         comment.className = "btn btn-lg btn-dark";
@@ -70,17 +71,25 @@ function data() {
         const form = document.createElement("form");
         const input = document.createElement("input");
         const submit = document.createElement("button");
+        const comments = tweet.comments
+          for(let i of comments) {
+            const newComment = document.createElement('p');
+            newComment.textContent = i
+            commentbox.appendChild(newComment);
+          }
         submit.textContent = "Submit tweet";
         input.type = "text";
-        form.method = "POST";
         input.placeholder = "Write your comment here...";
-        submit.type = "Submit";
+        input.id = "commentInput";
+        submit.type = "submit";
+        input.className = "comment-message";
+        submit.className = "btn btn-lg btn-dark";
+        submit.id = "submitButton";
         form.appendChild(input);
         form.appendChild(submit);
         commentbox.appendChild(form);
         singlePost.appendChild(commentbox);
-        input.className = "comment-message";
-        submit.className = "btn btn-lg btn-dark";
+
         commentbox.style.display = "none";
         comment.addEventListener("click", () => {
           if (commentbox.style.display === "block") {
@@ -100,7 +109,32 @@ function data() {
         love.addEventListener("click", () => {
           loveCount.textContent++;
         });
-      
+
+        form.addEventListener("submit", (e) => {
+          
+          console.log("Submitted");
+          const commentValue = e.target.commentInput.value;
+          console.log(commentValue);
+          console.log(idInfo)
+          comments.push(commentValue);
+
+          const options = {
+            method: "POST",
+            body: JSON.stringify(commentValue),
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin":"*"
+            },
+            
+          };
+          console.log(options.body)
+
+          fetch(`http://localhost:${port}/entries/${Number(idInfo)}/add`, options)
+          .then((function(response) {
+            return response.json()
+          }))
+          
+        });
       }
     });
 }
@@ -120,14 +154,16 @@ postForm.addEventListener("submit", (e) => {
   };
   console.log(postData);
   const options = {
-    method: "POST",
+    method: "GET",
     body: JSON.stringify(postData),
     headers: {
-      "Content-Type": "application/json"
-    }
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
   };
-  fetch(`http://localhost:${port}/entries`, options).then(postData => console.log(postData));
+  fetch(`http://localhost:${port}/entries`, options).then((postData) =>
+    console.log(postData)
+  );
 });
-
 
 init();
