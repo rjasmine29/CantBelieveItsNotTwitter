@@ -28,7 +28,7 @@ function writeDataJson (updatedData) {
 
 router.route('/')
       .get((req,res) =>{
-          const entryData = data;
+          const entryData = Entry.all;
           res.send(entryData);
       })
       .post((req,res) =>{
@@ -55,22 +55,23 @@ router.route('/')
 //       })
 
 //updates the db with new entries
-router.route('/create')
-    .get((req,res) =>{
-        const newEntry = Entry.create(sample); //change sample to req.body
-        fs.writeFile(path, JSON.stringify(newEntry,null,4), 'utf8', err =>{
-            if(err){
-                console.log('error');
-            }else{
-                console.log('data saved')
-            }
-        }) 
-        res.send(newEntry)
-    })
-    //need to change get to post once we merge with frontend
-    .post((req,res) => {                
-        res.status(201).send(newEntry)
-})
+// router.route('/create')
+//     .get((req,res) =>{
+//         const newEntry = Entry.create(sample); //change sample to req.body
+//         fs.writeFile(path, JSON.stringify(newEntry,null,4), 'utf8', err =>{
+//             if(err){
+//                 console.log('error');
+//             }else{
+//                 console.log('data saved')
+//             }
+//         }) 
+//         res.send(newEntry)
+//     })
+//     //need to change get to post once we merge with frontend
+//     .post((req,res) => {                
+//         res.status(201).send(newEntry)
+// })
+
 router.route('/:id/add')
     .get((req,res) =>{
         const id = Number(req.params.id);
@@ -94,11 +95,19 @@ router.route('/:id')
             const entry = Entry.findById(id);
             res.send(entry)
         })
+        .delete((req,res) =>{
+            const id = Number(req.params.id);
+            //const entry = Entry.findById(id);
+            const newList = Entry.deleteEntry(id)
+            writeDataJson(newList);
+            res.send('entry deleted')
+        })
+
 router.route('/:id/:react')
     .get((req,res) =>{
         const id = Number(req.params.id); //gets the id
         const react = req.params.react; //gets the reaction
-        console.log(id,typeof(react))
+        //console.log(id,typeof(react))
         //find entry by id and then modify reaction
         const entry = Entry.findById(id);
         const updated = Entry.changeNumberOf(entry, react)
