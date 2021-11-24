@@ -6,7 +6,10 @@ const Entry = require('../models/entries');
 //reads stuff from the file syncronously
 const path = __dirname + '/../data.json'
 const fs = require('fs');
+
 const dayjs = require('dayjs');
+const customParseFormat = require('dayjs/plugin/customParseFormat')
+dayjs.extend(customParseFormat)
 
 //const data = JSON.parse(file);
 
@@ -27,35 +30,16 @@ router.route('/')
           res.send(entryData);
       })
       .post((req,res) =>{
-        const newEntry = Entry.create(req.body , dayjs().format());
+        const date = dayjs().format('HH:mm, DD-MM-YYYY')
+        const newEntry = Entry.create(req.body,date);
         writeDataJson(newEntry)
-        res.send(newEntry)
+        res.status(200)
       })
 
-//updates the db with new entries
-// router.route('/create')
-//     .get((req,res) =>{
-//         const newEntry = Entry.create(sample); //change sample to req.body
-//         fs.writeFile(path, JSON.stringify(newEntry,null,4), 'utf8', err =>{
-//             if(err){
-//                 console.log('error');
-//             }else{
-//                 console.log('data saved')
-//             }
-//         }) 
-//         res.send(newEntry)
-//     })
-//     //need to change get to post once we merge with frontend
-//     .post((req,res) => {                
-//         res.status(201).send(newEntry)
-// })
-//const com = 'hello t here'
 router.route('/:id/add')
     .post((req,res) =>{
         const id = Number(req.params.id);
-        console.log(id)
         const comment = req.body;
-        console.log(comment)
         const entry = Entry.findById(id);
         const updated = Entry.addReply(entry,comment)
         writeDataJson(updated)
@@ -71,7 +55,6 @@ router.route('/:id')
         })
         .delete((req,res) =>{
             const id = Number(req.params.id);
-            //const entry = Entry.findById(id);
             const newList = Entry.deleteEntry(id)
             writeDataJson(newList);
             res.send('entry deleted')

@@ -1,3 +1,5 @@
+
+
 const port = 3010;
 
 const makeAPost = document.querySelector("#write-a-post");
@@ -16,9 +18,11 @@ button.addEventListener("click", () => {
 //   e.preventDefault();
 //   data();
 // }
+function makePage(){
 
+}
 home.addEventListener('click',e =>{
-  e.preventDefault();
+  //e.preventDefault();
   fetch("http://localhost:3010/entries")
     .then((r) => r.json())
     .then((data) => {
@@ -150,7 +154,6 @@ home.addEventListener('click',e =>{
 
 const postForm = document.querySelector("#postForm");
 postForm.addEventListener("submit", (e) => {
-  console.log("Submitted");
   e.preventDefault();
   const postData = {
     title: e.target.postTitle.value,
@@ -171,7 +174,6 @@ postForm.addEventListener("submit", (e) => {
     },
   };
   fetch(`http://localhost:${port}/entries`, options)
-    // .then((postData) => console.log(postData));
 });
 
 //init(e);
