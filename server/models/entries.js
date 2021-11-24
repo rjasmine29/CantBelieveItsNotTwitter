@@ -10,7 +10,7 @@ class Entry {
         this.likes = 0;
         this.dislikes = 0;
         this.love = 0;
-        this.comment = [];
+        this.comments = [];
     }
 
     static get all() {
@@ -19,12 +19,11 @@ class Entry {
     }
 
     static findById(title) {
-        try {
             const entryData = entries.filter((entry) => entry.id === title)[0];
-            return entryData;
-        } catch (err) {
-            throw new Error('That entry does not exist.');
-        }
+            if(typeof(entryData) == 'undefined' ){
+                throw ('That entry does not exist.')
+            }
+            return entryData[0];
     }
 
     static findByTitle(title) {
