@@ -26,12 +26,12 @@
     <section id="write-a-post">
         <form id="postForm" class="py-5 px-5 row g-3">
             <div class="col-md-12">
-              <input type="text" class="form-control" id="postTitle" placeholder="Give your post a title">
+              <input type="text" class="form-control" id="postTitle" maxlength="80" placeholder="Give your post a title">
             </div>
             <div class="col-md-12">
                 <input type="text" class="form-control" id="postGiphy" placeholder="Add an image? Send the url">
               </div>
-           <textarea name="postMessage" id="postMessage" cols="20" rows="5" placeholder="Tell us about your message"></textarea>
+           <textarea name="postMessage" id="postMessage" maxlength="250" cols="20" rows="5" placeholder="Tell us about your message"></textarea>
             <div class="col-12">
               <button type="submit" class="btn btn-dark btn-lg">Send</button>
             </div>

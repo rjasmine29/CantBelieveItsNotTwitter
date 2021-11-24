@@ -1,5 +1,8 @@
-function makeACard(idInfo,titleInfo,messageInfo,giphyinfo,likeInfo,dislikeInfo,loveInfo,commentsInfo){
+function makeACard(dateInfo,idInfo,titleInfo,messageInfo,giphyinfo,likeInfo,dislikeInfo,loveInfo,commentsInfo){
       //Create Title, message and Giphy
+      const date = document.createElement("p")
+      date.textContent = dateInfo
+      console.log(dateInfo)
       const title = document.createElement("h1");
       title.textContent = titleInfo;
       const message2 = document.createElement("p");
@@ -70,6 +73,7 @@ function makeACard(idInfo,titleInfo,messageInfo,giphyinfo,likeInfo,dislikeInfo,l
      //Create card and add components to it
      const singlePost = document.createElement("div");
      singlePost.className = "card";
+     singlePost.appendChild(date)
      singlePost.appendChild(title);
      singlePost.appendChild(message2);
      singlePost.appendChild(image)

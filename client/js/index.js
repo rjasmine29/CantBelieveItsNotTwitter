@@ -47,6 +47,7 @@ function data() {
       // .then(r=> console.log(r))
       .then((data) => {
         for (let tweet of data) {
+          let dateInfo = tweet.date
           let idInfo = tweet.id;
           let titleInfo = tweet.title;
           let messageInfo = tweet.message;
@@ -56,6 +57,7 @@ function data() {
           let loveInfo = tweet.love;
           let commentsInfo = tweet.comments;
           makeACard(
+            dateInfo,
             idInfo,
             titleInfo,
             messageInfo,
