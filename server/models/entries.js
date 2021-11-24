@@ -36,7 +36,7 @@ class Entry {
         }
     }
 
-    static create(entry) {
+    static create(entry,date) {
         const newEntry = new Entry(entry, date);
         entries.push(newEntry)
         return entries;
