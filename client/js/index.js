@@ -4,6 +4,7 @@ const makeAPost = document.querySelector("#write-a-post");
 makeAPost.style.display = "none"; //makes form invisible to start
 const postArea = document.querySelector("#posts-area");
 const button = document.querySelector("#write-a-post-button");
+const home = document.querySelector('#homeButton')
 button.addEventListener("click", () => {
   if (makeAPost.style.display === "block") {
     makeAPost.style.display = "none";
@@ -11,11 +12,13 @@ button.addEventListener("click", () => {
     makeAPost.style.display = "block";
   }
 });
-function init() {
-  data();
-}
+// function init(e) {
+//   e.preventDefault();
+//   data();
+// }
 
-function data() {
+home.addEventListener('click',e =>{
+  e.preventDefault();
   fetch("http://localhost:3010/entries")
     .then((r) => r.json())
     .then((data) => {
@@ -95,14 +98,15 @@ function data() {
         singlePost.appendChild(commentbox);
         commentbox.style.display = "none";
 
-        comment.addEventListener("click", () => {
+        comment.addEventListener("click", (e) => {
+          e.preventDefault();
           if (commentbox.style.display === "block") {
             commentbox.style.display = "none";
           } else {
             commentbox.style.display = "block";
           }
         });
-
+        //event listener of comments
         form.addEventListener("submit", (e) => {
           e.preventDefault();
           console.log("Submitted");
@@ -111,28 +115,37 @@ function data() {
             id: 1
           };
 
-          console.log(commentValue);
-          console.log(idInfo)
-          //comments.push(commentValue);
-  
           const options = {
             method: "POST",
             body: JSON.stringify(commentValue),
             headers: {
               "Content-Type": "application/json",
-              // 'Access-Control-Allow-Origin':"*"
             },
-            //mode: "no-cors"
           };
-          console.log(options.body)
   
           fetch(`http://localhost:${port}/entries/${idInfo}/add`, options)
-             .then(console.log)
           })
+
+        like.addEventListener('click', e =>{
+          e.preventDefault();
+          e.stopImmediatePropagation();
+         fetch(`http://localhost:${port}/entries/${idInfo}/likes`)
+        })
+
+        love.addEventListener('click', e =>{
+          e.preventDefault();
+          fetch(`http://localhost:${port}/entries/${idInfo}/love`)
+        })
+
+        dislike.addEventListener('click', e =>{
+          e.preventDefault();
+          fetch(`http://localhost:${port}/entries/${idInfo}/dislikes`)
+        })
       }
-      console.log('done')
+
+
     })
-  }
+  })
 
 
 const postForm = document.querySelector("#postForm");
@@ -150,16 +163,15 @@ postForm.addEventListener("submit", (e) => {
   };
   console.log(postData);
   const options = {
-    method: "GET",
+    method: "POST",
     body: JSON.stringify(postData),
     headers: {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
     },
   };
-  fetch(`http://localhost:${port}/entries`, options).then((postData) =>
-    console.log(postData)
-  );
+  fetch(`http://localhost:${port}/entries`, options)
+    // .then((postData) => console.log(postData));
 });
 
-init();
+//init(e);

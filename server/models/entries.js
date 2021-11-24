@@ -1,7 +1,8 @@
 const entries = require('../data.json');
 
 class Entry {
-    constructor(data) {
+    constructor(data, date) {
+        this.date = date;
         this.id = entries.length + 1;
         this.title = data.title;
         this.message = data.message;
@@ -36,7 +37,7 @@ class Entry {
     }
 
     static create(entry) {
-        const newEntry = new Entry(entry);
+        const newEntry = new Entry(entry, date);
         entries.push(newEntry)
         return entries;
     }

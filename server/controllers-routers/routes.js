@@ -5,8 +5,9 @@ const Entry = require('../models/entries');
 
 //reads stuff from the file syncronously
 const path = __dirname + '/../data.json'
-const fs = require('fs')
-const file = fs.readFileSync(path, 'utf8');
+const fs = require('fs');
+const dayjs = require('dayjs');
+
 //const data = JSON.parse(file);
 
 // function to update data.json file
@@ -26,7 +27,7 @@ router.route('/')
           res.send(entryData);
       })
       .post((req,res) =>{
-        const newEntry = Entry.create(req.body);
+        const newEntry = Entry.create(req.body , dayjs().format());
         writeDataJson(newEntry)
         res.send(newEntry)
       })
