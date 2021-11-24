@@ -6,9 +6,13 @@
 body{
     margin-left: 3rem;
     margin-right: 3rem;
-    background-color: #2da19cb9;
+    background-color: cadetblue;
     color: white;
     font-family: 'Cabin', sans-serif;
+}
+img{
+    width:30rem;
+    border-radius: 3rem;
 }
 
 #postMessage{
@@ -69,6 +73,7 @@ body{
 
 .button-area{
     margin-left: 3rem;
+    display: inline-flex;
 }
 
 .button-area button{
