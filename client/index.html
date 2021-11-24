@@ -31,8 +31,15 @@
             <div class="col-md-12">
                 <input type="text" class="form-control" id="postGiphy" placeholder="Add an image? Send the url">
               </div>
-           <textarea name="postMessage" id="postMessage" maxlength="250" cols="20" rows="5" placeholder="Tell us about your message"></textarea>
-            <div class="col-12">
+           <textarea name="postMessage" id="postMessage" maxlength="250" cols="20" rows="5" placeholder="Tell us about your message" onkeyup="countletters()"></textarea>
+              <p> Total Characters: <span class = "count">0</span>
+              <span id="maximum">/250</span>
+              </p>
+              
+
+              <div class="col-12">
+
+
               <button type="submit" class="btn btn-dark btn-lg">Send</button>
             </div>
           </form>

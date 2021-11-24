@@ -1,21 +1,16 @@
 const port = 3010;
 
 const makeAPost = document.querySelector("#write-a-post");
-makeAPost.style.display = "none"; //makes form invisible to start
 const postArea = document.querySelector("#posts-area");
 const button = document.querySelector("#write-a-post-button");
 const home = document.querySelector('#homeButton')
 const darkMode = document.querySelector('#dark-mode')
+const textarea = document.querySelector('textarea');
+const count = document.querySelector('.count');
 
-darkMode.addEventListener("click" , () => {
-  if (document.body.style.backgroundColor === "cadetblue" ) {
-    document.body.style.backgroundColor = "black"
-  } else {
-    document.body.style.backgroundColor = "cadetblue"
-  }
-})
+makeAPost.style.display = "none";
 
-//"#2da19cb9"
+darkMode.addEventListener("click" , makeDarkMode);
 
 button.addEventListener("click", () => {
   if (makeAPost.style.display === "block") {
@@ -24,18 +19,6 @@ button.addEventListener("click", () => {
     makeAPost.style.display = "block";
   }
 });
-
-home.addEventListener("click", (e) => {
-  e.preventDefault();
-  init();
-})
-function init() {
-
-  data();
-  makeNewPost();
-}
-
-
 
 
 function data() {
@@ -77,3 +60,14 @@ function data() {
      ;
     }
 
+
+function init() {
+  countletters();
+  data();
+  makeNewPost();
+}
+
+home.addEventListener("click", (e) => {
+  e.preventDefault();
+  init();
+})

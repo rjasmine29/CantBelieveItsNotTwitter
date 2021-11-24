@@ -55,6 +55,8 @@ function makeACard(dateInfo,idInfo,titleInfo,messageInfo,giphyinfo,likeInfo,disl
       submit.className = "btn btn-lg btn-dark";
       submit.id = "submitButton";
 
+      
+
 
       for (let i in commentsInfo) {
         console.log(commentsInfo);
@@ -157,3 +159,18 @@ function makeNewPost() {
         });
     
       }
+
+function countletters() {
+const textLength = textarea.value.length;
+count.innerText = `${textLength}`;
+}
+
+function makeDarkMode() 
+{
+    if (document.body.style.backgroundColor === "cadetblue" ) {
+      document.body.style.backgroundColor = "black"
+    } else {
+      document.body.style.backgroundColor = "cadetblue"
+    }
+};
+      
