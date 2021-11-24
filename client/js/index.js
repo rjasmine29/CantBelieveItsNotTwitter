@@ -1,3 +1,5 @@
+
+
 const port = 3010;
 
 const makeAPost = document.querySelector("#write-a-post");
@@ -21,13 +23,13 @@ button.addEventListener("click", () => {
 });
 
 
+
 function data() {
   try{
     
     fetch("http://localhost:3010/entries")
     
       .then((r) => r.json())
-      // .then(r=> console.log(r))
       .then((data) => {
         for (let tweet of data) {
           let dateInfo = tweet.date
@@ -59,6 +61,7 @@ function data() {
   }
      ;
     }
+
 
 
 function init() {
