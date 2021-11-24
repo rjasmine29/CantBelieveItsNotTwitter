@@ -33,7 +33,7 @@ router.route('/')
         const date = dayjs().format('HH:mm, DD-MM-YYYY')
         const newEntry = Entry.create(req.body,date);
         writeDataJson(newEntry)
-        res.status(200)
+        res.status(200).send(newEntry)
       })
 
 router.route('/:id/add')
@@ -43,7 +43,7 @@ router.route('/:id/add')
         const entry = Entry.findById(id);
         const updated = Entry.addReply(entry,comment)
         writeDataJson(updated)
-        res.send(updated)
+        res.send(updated.comments, )
     })
 
 //update db 

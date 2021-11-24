@@ -10,7 +10,7 @@ class Entry {
         this.likes = 0;
         this.dislikes = 0;
         this.love = 0;
-        this.comment = [];
+        this.comments = [];
     }
 
     static get all() {
@@ -43,6 +43,7 @@ class Entry {
     }
 
     static addReply(entry, replyData) {
+        console.log(entry)
         entry.comments.push(replyData.code)
         return entries;
     }
