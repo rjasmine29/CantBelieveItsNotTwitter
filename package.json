@@ -7,7 +7,7 @@
     "dev": "nodemon ./server/index.js",
     "coverage": "jest --coverage --silent",
     "start": "node ./server/index.js",
-    "test": "jest --watchAll --silent"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
