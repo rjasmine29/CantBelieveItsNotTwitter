@@ -41,9 +41,10 @@ router.route('/:id/add')
         const id = Number(req.params.id);
         const comment = req.body;
         const entry = Entry.findById(id);
+        console.log(entry)
         const updated = Entry.addReply(entry,comment)
         writeDataJson(updated)
-        res.status(201).send(updated[id-1])
+        res.status(201)//.send(updated[id-1])
     })
 
 //update db 

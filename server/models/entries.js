@@ -23,7 +23,7 @@ class Entry {
             if(typeof(entryData) == 'undefined' ){
                 throw ('That entry does not exist.')
             }
-            return entryData[0];
+            return entryData;
     }
 
     static findByTitle(title) {
