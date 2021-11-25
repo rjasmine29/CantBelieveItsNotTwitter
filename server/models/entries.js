@@ -18,24 +18,23 @@ class Entry {
         return allEntries;
     }
 
-    static findById(title) {
-            const entryData = entries.filter((entry) => entry.id === title)[0];
-            if(typeof(entryData) == 'undefined' ){
-                throw ('That entry does not exist.')
-            }
-            return entryData;
+    static findById(id) {
+        const entryData = entries.filter((entry) => entry.id === id)[0];
+        if (typeof(entryData) == "undefined") {
+            throw new Error('That entry does not exist.');
+        }
+        return entryData;
     }
 
     static findByTitle(title) {
-        try {
-            const entryData = entries.filter((entry) => entry.title === title)[0];
-            return entryData;
-        } catch (err) {
+        const entryData = entries.filter((entry) => entry.title === title)[0];
+        if (typeof(entryData) == "undefined") {
             throw new Error('That entry does not exist.');
         }
+        return entryData;
     }
 
-    static create(entry,date) {
+    static create(entry, date) {
         const newEntry = new Entry(entry, date);
         entries.push(newEntry)
         return entries;
@@ -54,11 +53,10 @@ class Entry {
 
     static deleteEntry(entry){
         const index = entries.indexOf(entry.id);
-        if (index > -1){
-            entries.splice(index,1);
-        }
+        entries.splice(index,1);
         return entries;
     }
+
 }
 
 module.exports = Entry;
