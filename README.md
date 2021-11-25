@@ -22,6 +22,8 @@ _Or
 ## Technologies
 * HTML/CSS for the static elements of the website.
 * Javascript for the dynamic elements.
+* node and nodemon for the server
+* jest for testing
 * Netlify to deploy the front end.
 * Heroku to deploy the back end.
 
