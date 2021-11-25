@@ -42,6 +42,7 @@ class Entry {
     }
 
     static addReply(entry, replyData) {
+        console.log(entry)
         entry.comments.push(replyData.code)
         return entries;
     }
