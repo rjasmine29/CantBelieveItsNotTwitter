@@ -47,6 +47,7 @@ _Or
 * Had to go through a lot of trial and error to get the post method to work for the entries and relevant comments to that entry.
 * Tests for the front end weren't initially being recognised by jest.
 * Many elements were being created dynamically within a fetch which made accessing the elements difficult.
+* Difficult to test front end for async functions and event listeners
 
 ## Bugs
 * Some front-end tests are failing.
@@ -60,7 +61,7 @@ _Or
 * Let users have more choice over the look of their post i.e. choosing background color, fonts and adding elements like lists or emphasised text.
 
 ## Testing
-Overall coverage: **????**
+Overall coverage: **89%**
 ### Front end
 Coverage: 80.4%
 * Testing was performed on the app functionality and layout of the HTML. All HTML tests passed successfully.
