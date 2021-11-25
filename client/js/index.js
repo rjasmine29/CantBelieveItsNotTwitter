@@ -1,31 +1,21 @@
-
-
 const port = 3010;
 
 const makeAPost = document.querySelector("#write-a-post");
-const postArea = document.querySelector("#posts-area");
+makeAPost.style.display = 'none';
+//const postArea = document.querySelector("#posts-area");
 const button = document.querySelector("#write-a-post-button");
 const home = document.querySelector('#homeButton')
 const darkMode = document.querySelector('#dark-mode')
 const textarea = document.querySelector('textarea');
-const count = document.querySelector('.count');
+// const count = document.querySelector('.count');
 
-makeAPost.style.display = "none";
+
+button.addEventListener("click", e => makePost(makeAPost))
 
 darkMode.addEventListener("click" , makeDarkMode);
 
-button.addEventListener("click", () => {
-  if (makeAPost.style.display === "block") {
-    makeAPost.style.display = "none";
-  } else {
-    makeAPost.style.display = "block";
-  }
-});
-
-
 function data() {
   try{
-    
     fetch("http://localhost:3010/entries")
     
       .then((r) => r.json())
@@ -67,12 +57,7 @@ function data() {
 function init() {
   countletters();
   data();
-  makeNewPost();
+  makeNewPost(makeAPost);
 }
-
-// home.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   init();
-// })
 
 init();
