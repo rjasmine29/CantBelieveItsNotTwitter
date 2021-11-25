@@ -10,7 +10,7 @@ A community journaling website, where users can anonymously post and react to ot
 * Open terminal and navigate to the CantBelieveItsNotTwitter folder.
 * Run `npm install`, `npm i jest -D supertest`, `npm install cors` and `npm install express` to install all dependencies. 
 _Or
-* If you are accessing the site as a user, go to <https://kind-tesla-f16978.netlify.app/?postMessage=yay>
+* If you are accessing the site as a user, go to <https://kind-tesla-f16978.netlify.app/>
 
 ### Usage
 #### Dev
@@ -60,10 +60,12 @@ _Or
 ## Testing
 Overall coverage: **????**
 ### Front end
-Coverage: 66%
+Coverage: 80.4%
 * Testing was performed on the app functionality and layout of the HTML. All HTML tests passed successfully.
 * Due to a lack of understanding with mock testing, it was difficult for us to complete the app testing. 
 
 ### Back end 
-Coverage: 91%
+Coverage: 100%
 * Testing was performed on routes and functions' functionality. All tests passed succesfully.
+
+![Coverage](![image](https://user-images.githubusercontent.com/55515038/143484351-ba35372a-f451-4892-98d0-b5de17340180.png)
