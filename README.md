@@ -58,5 +58,12 @@ _Or
 * Let users have more choice over the look of their post i.e. choosing background color, fonts and adding elements like lists or emphasised text.
 
 ## Testing
+Overall coverage: **????**
+### Front end
+Coverage: 66%
+* Testing was performed on the app functionality and layout of the HTML. All HTML tests passed successfully.
+* Due to a lack of understanding with mock testing, it was difficult for us to complete the app testing. 
 
-**Add a picture for each test suite here and picture of coverage?**
+### Back end 
+Coverage: 91%
+* Testing was performed on routes and functions' functionality. All tests passed succesfully.
