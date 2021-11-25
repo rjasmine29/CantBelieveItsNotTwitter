@@ -6,27 +6,9 @@
         "image": "https://media.giphy.com/media/TdpZPpb7MjzWsoZGGn/giphy.gif",
         "dislikes": 1,
         "likes": 9,
-        "love": 3,
+        "love": 4,
         "comments": [
             "hello t here",
-            "hello t here",
-            "whats popin",
-            "yabadabadoooo",
-            "yabadabadoooo",
-            "omg its workin",
-            "witness me",
-            "jakirul is a god",
-            "re",
-            "Test works",
-            "Test works",
-            "Test works",
-            "Test works",
-            "Test works",
-            "Test works",
-            "Test works",
-            "Test works",
-            "Test works",
-            "Test works"
         ]
     },
     {
@@ -66,5 +48,6 @@
         "likes": 0,
         "love": 0,
         "comments": []
+
     }
 ]
