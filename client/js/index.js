@@ -23,7 +23,6 @@ button.addEventListener("click", () => {
 });
 
 
-
 function data() {
   try{
     
@@ -31,7 +30,8 @@ function data() {
     
       .then((r) => r.json())
       .then((data) => {
-        for (let tweet of data) {
+        const reversedList = data.reverse()
+        for (let tweet of reversedList) {
           let dateInfo = tweet.date
           let idInfo = tweet.id;
           let titleInfo = tweet.title;
@@ -70,7 +70,9 @@ function init() {
   makeNewPost();
 }
 
-home.addEventListener("click", (e) => {
-  e.preventDefault();
-  init();
-})
+// home.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   init();
+// })
+
+init();

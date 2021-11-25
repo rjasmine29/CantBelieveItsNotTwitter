@@ -41,9 +41,10 @@ router.route('/:id/add')
         const id = Number(req.params.id);
         const comment = req.body;
         const entry = Entry.findById(id);
+        console.log(entry)
         const updated = Entry.addReply(entry,comment)
         writeDataJson(updated)
-        res.status(201).send(updated[id-1])
+        res.status(201)//.send(updated[id-1])
     })
 
 //update db 
@@ -66,12 +67,13 @@ router.route('/:id')
         // })
 
 router.route('/:id/:react')
-    .post((req,res) =>{
+    .get((req,res) =>{
         const id = Number(req.params.id); //gets the id
         const react = req.params.react; //gets the reaction
-        //console.log(id,typeof(react))
+        // console.log(id,typeof(react))
         //find entry by id and then modify reaction
         const entry = Entry.findById(id);
+        console.log(entry)
         const updated = Entry.changeNumberOf(entry, react)
         //write to file again
         writeDataJson(updated)
