@@ -68,4 +68,4 @@ Coverage: 80.4%
 Coverage: 100%
 * Testing was performed on routes and functions' functionality. All tests passed succesfully.
 
-![Coverage](![image](https://user-images.githubusercontent.com/55515038/143484351-ba35372a-f451-4892-98d0-b5de17340180.png)
+![Coverage](https://user-images.githubusercontent.com/55515038/143484351-ba35372a-f451-4892-98d0-b5de17340180.png)
